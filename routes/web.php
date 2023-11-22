@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\AddProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\salary\ChartController;
+use App\Http\Controllers\salary\StructureController;
 use App\Http\Controllers\UserController;
+use App\Models\salary\Structure;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,6 +89,31 @@ Route::group([
     Route::get('/delete/users/{user}','delete');
     Route::delete('/delete/users/{user}','destroy');
 });
+
+Route::group([
+    'prefix'=>'profile',
+    'controller'=> AddProfileController::class
+],function (){
+    Route::get('/add/{user}','add');
+
+});
+
+
+Route::view('/test','test');
+
+Route::get('/salary/chart/add',[ChartController::class,'create']);
+Route::post('/salary/chart/add',[ChartController::class,'store']);
+Route::get('/salary/chart',[ChartController::class,'show']);
+Route::get('/salary/chart/edit/{chart}',[ChartController::class,'edit']);
+Route::put('/salary/chart/update/{chart}',[ChartController::class,'update']);
+Route::get('/salary/chart/delete/{chart}',[ChartController::class,'delete']);
+Route::delete('/salary/chart/delete/{chart}',[ChartController::class,'destroy']);
+
+Route::get('/salary/structure',[StructureController::class,'show']);
+Route::get('/salary/structure/add',[StructureController::class,'create']);
+Route::post('/salary/structure/add',[StructureController::class,'store']);
+
+
 
 
 

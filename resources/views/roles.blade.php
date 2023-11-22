@@ -21,12 +21,12 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
 
-                    @foreach($data as $d)
+                    @foreach($roles as $role)
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $d['name'] }}</strong></td>
-                        <td>{{ $d['slug'] }}</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $role['name'] }}</strong></td>
+                        <td>{{ $role['slug'] }}</td>
                         <td>
-                            @foreach ($d->permissions as $permission)
+                            @foreach ($role->permissions as $permission)
                                 <span class="badge bg-label-info">{{ $permission->name }}</span>
                                 @if (!$loop->last)
                                     ,
@@ -39,10 +39,10 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/edit/roles/{{$d['id']}}"
+                                    <a class="dropdown-item" href="/edit/roles/{{$role['id']}}"
                                     ><i class="bx bx-edit-alt me-1"></i> Edit</a
                                     >
-                                    <a class="dropdown-item" href="/delete/roles/{{$d['id']}}"
+                                    <a class="dropdown-item" href="/delete/roles/{{$role['id']}}"
                                     ><i class="bx bx-trash me-1"></i> Delete</a
                                     >
                                 </div>
@@ -53,10 +53,11 @@
 
                     </tbody>
                 </table>
-                {{ $data->links() }}
+                {{ $roles->links() }}
 
             </div>
         </div>
+
         <!--/ Basic Bootstrap Table -->
     </div>
 </x-layouts.app>

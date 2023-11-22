@@ -7,17 +7,18 @@ use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class RoleController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
 
-        $data = Cache::rememberForever('roles',function (){
-            return  Role::paginate(10);
+//        $roles = Cache::rememberForever('roles?page=' . $request->get('page', 1),function (){
+//            return  Role::paginate(10);
+//        });
 
-        });
-        return view('roles',['data'=>$data]);
+        return view('roles',['roles'=>Role::paginate(10)]);
     }
 
     public function add_roles()
@@ -37,7 +38,7 @@ class RoleController extends Controller
 
         $roles = Role::create([
             'name' => $request->role,
-            'slug' => \Illuminate\Support\Str::slug($request->role),
+            'slug' => Str::slug($request->role),
         ]);
 
         $roles->permissions()->attach($request->permissions);
@@ -57,7 +58,7 @@ class RoleController extends Controller
         $role = Role::find($id);
         $role->update([
             'name' => $request->role,
-            'slug' => \Illuminate\Support\Str::slug($request->role),
+            'slug' => Str::slug($request->role),
         ]);
 
         $role->permissions()->sync($request->permissions);

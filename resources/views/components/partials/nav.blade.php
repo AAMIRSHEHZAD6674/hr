@@ -37,6 +37,36 @@
         </ul>
     </li>
 
+
+    <!-- Salary -->
+    <li class="menu-item">
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <div data-i18n="Extended UI">Salary</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="/salary/chart" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Salary Chart</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/salary/structure" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Structure</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="/roles" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Profile List</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="extended-ui-text-divider.html" class="menu-link">
+                    <div data-i18n="Text Divider">Profile Edit</div>
+                </a>
+            </li>
+        </ul>
+    </li>
     <!-- Layouts -->
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
